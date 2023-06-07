@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { generateList } from "../../utils/faker";
 import { WordFind } from "../../utils/grid2";
 import Completion from "../Completion/Completion";
-const { newPuzzle, solve, orientations } = WordFind();
+const { orientations } = WordFind();
 const Grid2 = () => {
 	const [grid, setGrid] = useState([[]]);
 	const [words, setWords] = useState<string[]>([]);

@@ -48,6 +48,8 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			y;
+			h;
 			return w >= x + l;
 		},
 		horizontalBack: function (
@@ -57,6 +59,9 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			y;
+			h;
+			w;
 			return x + 1 >= l;
 		},
 		vertical: function (
@@ -66,6 +71,8 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			x;
+			w;
 			return h >= y + l;
 		},
 		verticalUp: function (
@@ -75,6 +82,9 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			x;
+			h;
+			w;
 			return y + 1 >= l;
 		},
 		diagonal: function (
@@ -93,6 +103,7 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			w;
 			return x + 1 >= l && h >= y + l;
 		},
 		diagonalUp: function (
@@ -102,6 +113,7 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			h;
 			return w >= x + l && y + 1 >= l;
 		},
 		diagonalUpBack: function (
@@ -111,30 +123,42 @@ export const WordFind = function () {
 			w: number,
 			l: number
 		) {
+			h;
+			w;
 			return x + 1 >= l && y + 1 >= l;
 		},
 	};
 
 	const skipOrientations: any = {
 		horizontal: function (x: number, y: number, l: number) {
+			x;
+			l;
 			return { x: 0, y: y + 1 };
 		},
 		horizontalBack: function (x: number, y: number, l: number) {
+			x;
 			return { x: l - 1, y: y };
 		},
 		vertical: function (x: number, y: number, l: number) {
+			x;
+			l;
 			return { x: 0, y: y + 100 };
 		},
 		verticalUp: function (x: number, y: number, l: number) {
+			x;
+			y;
 			return { x: 0, y: l - 1 };
 		},
 		diagonal: function (x: number, y: number, l: number) {
+			l;
+			x;
 			return { x: 0, y: y + 1 };
 		},
 		diagonalBack: function (x: number, y: number, l: number) {
 			return { x: l - 1, y: x >= l - 1 ? y + 1 : y };
 		},
 		diagonalUp: function (x: number, y: number, l: number) {
+			x;
 			return { x: 0, y: y < l - 1 ? l - 1 : y + 1 };
 		},
 		diagonalUpBack: function (x: number, y: number, l: number) {
@@ -143,7 +167,7 @@ export const WordFind = function () {
 	};
 
 	const fillPuzzle = function (words: string[], options: any) {
-		const puzzle = [];
+		const puzzle: any = [];
 		let i, j, len;
 		console.log("options = ", options);
 
@@ -408,7 +432,7 @@ export const WordFind = function () {
 			let puzzleString = "";
 			for (let i = 0, height = puzzle.length; i < height; i++) {
 				const row = puzzle[i];
-				for (const j = 0, width = row.length; j < width; j++) {
+				for (let j = 0, width = row.length; j < width; j++) {
 					puzzleString += (row[j] === "" ? " " : row[j]) + " ";
 				}
 				puzzleString += "\n";

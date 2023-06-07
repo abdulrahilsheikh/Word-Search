@@ -23,11 +23,11 @@ export const generateList = (): string[] => {
 		idx.add(faker.number.int({ min: 0, max: 9 }));
 	}
 	const list = [...idx.values()]
-		.map((i) => ref[i])
+		.map((i: any) => ref[i])
 		.filter((i) => i.length <= 12);
 	return list;
 };
 
-export const generateWords = (length: number) => {
+export const generateWords = () => {
 	return generateList();
 };
